@@ -62,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['solicitar_documento'])
 
 
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_cliente'])) {
     $cliente_id = $_POST['cliente_id'];
     $nome = $_POST['nome'];
@@ -71,12 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_cliente'])) {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    // Se a senha foi fornecida, realiza a atualização da senha
     if (!empty($senha)) {
         $senha = password_hash($senha, PASSWORD_DEFAULT);
         $sql = "UPDATE users SET nome='$nome', celular='$celular', email='$email', usuario='$usuario', senha='$senha' WHERE id=$cliente_id";
     } else {
-        // Caso contrário, apenas atualiza os outros campos
         $sql = "UPDATE users SET nome='$nome', celular='$celular', email='$email', usuario='$usuario' WHERE id=$cliente_id";
     }
 
@@ -101,19 +98,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['excluir_cliente'])) {
     }
 }
 
-// Parâmetros de busca e paginação
 $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
 $pagina_atual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $itens_por_pagina = 10;
 $offset = ($pagina_atual - 1) * $itens_por_pagina;
 
-// Consulta para contar o total de registros (com busca)
 $sql_contagem = "SELECT COUNT(*) as total FROM users WHERE nome LIKE '%$busca%'";
 $result_contagem = $conn->query($sql_contagem);
 $total_registros = $result_contagem->fetch_assoc()['total'];
 $total_paginas = ceil($total_registros / $itens_por_pagina);
 
-// Consulta para buscar os clientes (com paginação e busca)
 $sql = "SELECT * FROM users WHERE nome LIKE '%$busca%' LIMIT $offset, $itens_por_pagina";
 $result = $conn->query($sql);
 
@@ -250,20 +244,10 @@ if ($result->num_rows > 0) {
 
 
 
-
-
     </style>
 
 
-
-
-
 <style>
-
-
-
-
-
 
 
 
@@ -272,17 +256,6 @@ if ($result->num_rows > 0) {
             font-size: 1.8em;
             margin-bottom: 15px;
         }
-
-
-
-
-
-
-
-
-
-
-
 
         .status {
             padding: 5px 10px;
@@ -306,20 +279,11 @@ if ($result->num_rows > 0) {
         }
 
 
-
-
-
-
-
         .box2 {
             background: #ebeef5;
             padding: 5px;
             border-radius: 10px;
         }
-
-
-
-
 
         @media (max-width: 768px) {
 
@@ -337,7 +301,7 @@ if ($result->num_rows > 0) {
 
 
             .contratos li {
-                width: 90%; /* Reduz a largura em telas menores */
+                width: 90%; 
                 height: auto;
                 margin: 15px 0;
             }
@@ -351,11 +315,9 @@ if ($result->num_rows > 0) {
             }
 
             select {
-                width: 100%; /* Ajuste para ocupar toda a largura */
+                width: 100%; 
                 margin-bottom: 10px;
             }
-
-
 
 
         }
@@ -379,23 +341,15 @@ if ($result->num_rows > 0) {
     </style>
 
 
-
-
-
-
-
-
-
-
     <style>
-    /* RESET GLOBAL */
+   
     * {
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
     }
 
-    /* FONTES */
+  
     body {
     font-family: 'Inter', sans-serif;
     background-color: #f9f9f9;
@@ -406,9 +360,9 @@ if ($result->num_rows > 0) {
 
     header {
     display: flex;
-    align-items: center; /* Alinha os elementos verticalmente no centro */
-    justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-    padding: 20px 200px; /* Espaço interno do header */
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px 200px;
     background: #fff;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
@@ -429,7 +383,6 @@ if ($result->num_rows > 0) {
     margin-top: 10px;
     }
 
-    /* NAVIGATION BAR */
     nav {
     background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
     padding: 17px 30px;
@@ -465,12 +418,10 @@ if ($result->num_rows > 0) {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
-    /* CONTAINER PRINCIPAL */
     .container {
     padding: 50px 200px !important;
     }
 
-    /* BOX PRINCIPAL */
     .box {
     background: linear-gradient(145deg, #ffffff, #f1f1f1);
     padding: 45px;
@@ -492,7 +443,6 @@ if ($result->num_rows > 0) {
     margin-bottom: 25px;
     }
 
-    /* BOTÕES */
     .btn {
     background-color: #3498db;
     color: white;
@@ -517,7 +467,6 @@ if ($result->num_rows > 0) {
     background-color: #16a085;
     }
 
-    /* SEARCH AREA */
     .search-container {
     display: flex;
 
@@ -559,7 +508,6 @@ if ($result->num_rows > 0) {
     background-color: #2980b9;
     }
 
-    /* TABELAS */
     table {
     width: 100%;
     border-collapse: collapse;
@@ -607,7 +555,6 @@ if ($result->num_rows > 0) {
     color: white;
     }
 
-    /* CARDS GRÁFICOS */
     .card {
     background: #ffffff;
     padding: 35px;
@@ -634,7 +581,6 @@ if ($result->num_rows > 0) {
     padding: 25px;
     }
 
-    /* FOOTER */
     footer {
 
     color: #7f8c8d;
@@ -648,7 +594,6 @@ if ($result->num_rows > 0) {
     font-weight: 500;
     }
 
-    /* RESPONSIVO */
     @media (max-width: 1200px) {
     .container {
     padding: 20px 40px;
@@ -766,7 +711,7 @@ if ($result->num_rows > 0) {
 
         footer .copyright {
             position: relative;
-            margin-bottom: 20px; /* Espaçamento acima da imagem */
+            margin-bottom: 20px;
         }
 
         footer .footer-image {
@@ -778,15 +723,6 @@ if ($result->num_rows > 0) {
             background-size: cover;
             margin: 0;
         }
-
-
-
-
-
-
-
-
-
 
         .acao-btn {
             background-color: #0974a3;
@@ -886,7 +822,7 @@ if ($result->num_rows > 0) {
 
     nav ul {
         flex-wrap: wrap;
-        justify-content: center; /* Centraliza os itens no menu */
+        justify-content: center; 
     }
 
     table th, table td {
@@ -897,15 +833,15 @@ if ($result->num_rows > 0) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 50%; /* Mais espaço para o nome do projeto */
+        width: 50%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 20%; /* Ajusta o espaço do status */
+        width: 20%; 
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 30%; /* Ajusta o espaço das ações */
+        width: 30%;
     }
     }
 
@@ -929,7 +865,7 @@ if ($result->num_rows > 0) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+        width: 60%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
@@ -959,15 +895,15 @@ if ($result->num_rows > 0) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 70%; /* Prioriza espaço para o nome do projeto */
+        width: 70%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 15%; /* Reduz espaço do status */
+        width: 15%; 
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 15%; /* Reduz espaço das ações */
+        width: 15%; 
     }
     }
 
@@ -1057,13 +993,11 @@ if ($result->num_rows > 0) {
 
 <style>
 
-/* Container para os botões */
 .buttons-container {
-  display: flex; /* Utiliza Flexbox para alinha-los lado a lado */
-  gap: 10px; /* Adiciona um espaçamento entre os botões */
+  display: flex; 
+  gap: 10px;
 }
 
-/* Estilo dos botões */
 .btn-action {
   padding: 10px;
   border: none;
@@ -1074,21 +1008,15 @@ if ($result->num_rows > 0) {
 }
 
 
-
-
-
-
-
-
 @media (max-width: 768px) {
     .modal-content button {
-        font-size: 12px; /* Reduz o tamanho da fonte */
-        padding: 8px 16px; /* Ajusta o padding para botões menores */
+        font-size: 12px; 
+        padding: 8px 16px; 
     }
 
     .modal-content input[type="text"] {
-        font-size: 12px; /* Ajusta o tamanho do texto no input */
-        padding: 8px; /* Reduz o padding interno */
+        font-size: 12px; 
+        padding: 8px; 
     }
 
     .modal-content {
@@ -1099,7 +1027,7 @@ if ($result->num_rows > 0) {
     }
 
     .modal-content label {
-        font-size: 12px; /* Reduz o tamanho da fonte nos labels */
+        font-size: 12px; 
     }
 }
 
@@ -1140,13 +1068,12 @@ function addDocumento(clienteId) {
             <i class="fa-solid fa-delete-left"></i>
         </button>
     `;
-    // Adiciona o novo campo ao contêiner
     container.appendChild(newInput);
 }
 
 function removeDocumento(button) {
     var inputField = button.parentElement;
-    inputField.remove(); // Remove o campo de documento
+    inputField.remove(); 
 }
 
 
@@ -1162,23 +1089,20 @@ function removeDocumento(button) {
 }
 
 .form-group input {
-    width: 80%; /* Ajuste o tamanho do campo conforme necessário */
+    width: 80%; 
     padding: 8px;
     margin-right: 10px;
 }
 
 .form-group button {
 
-    margin-left: auto; /* Empurra o botão para a direita */
+    margin-left: auto; 
 }
 
 
 
 
 </style>
-
-
-
 
                         </td>
                     </tr>
@@ -1191,7 +1115,6 @@ function removeDocumento(button) {
                 </tbody>
             </table>
 
-            <!-- Paginação -->
         <div style="margin-top: 20px; text-align: center;">
             <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
                 <a href="?pagina=<?php echo $i; ?>&busca=<?php echo urlencode($busca); ?>" style="margin: 0 5px; color: black; <?php echo $i == $pagina_atual ? 'font-weight: bold;' : ''; ?>">
@@ -1323,3 +1246,4 @@ function removeDocumento(button) {
     exit();
 }
 ?>
+
