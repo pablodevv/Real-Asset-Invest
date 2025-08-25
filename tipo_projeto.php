@@ -14,7 +14,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Criar tabela de tipos de projeto, se não existir
     $sqlCreateTable = "CREATE TABLE IF NOT EXISTS tipos_projeto (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(255) NOT NULL,
@@ -23,7 +22,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
     $conn->query($sqlCreateTable);
 
-    // Criar tabela de checklist predefinido
     $sqlCreateChecklistTable = "CREATE TABLE IF NOT EXISTS checklist_tipo_projeto (
         id INT AUTO_INCREMENT PRIMARY KEY,
         tipo_projeto_id INT NOT NULL,
@@ -34,7 +32,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
     $conn->query($sqlCreateChecklistTable);
 
-    // Lidar com a criação de um novo tipo de projeto
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['novo_tipo_projeto'])) {
         $nome = $conn->real_escape_string($_POST['nome_tipo_projeto']);
 
@@ -49,11 +46,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         }
     }
 
-    // Lidar com a exclusão de um tipo de projeto
     if (isset($_GET['excluir_id'])) {
         $tipoProjetoId = (int) $_GET['excluir_id'];
 
-        // Deletar tipo de projeto e associados na tabela de checklist
         $sqlDeleteTipoProjeto = "DELETE FROM tipos_projeto WHERE id = $tipoProjetoId";
         if ($conn->query($sqlDeleteTipoProjeto)) {
             header("Location: tipo_projeto.php");
@@ -64,7 +59,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     }
 
 
-    // Recuperar todos os tipos de projeto
     $sqlSelectTiposProjeto = "SELECT * FROM tipos_projeto ORDER BY created_at DESC";
     $resultTiposProjeto = $conn->query($sqlSelectTiposProjeto);
     ?>
@@ -77,7 +71,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
         <title>Admin - Gerenciamento de Tipos de Projeto</title>
         <style>
-            /* Estilo semelhante ao seu código anterior */
             body {
                 font-family: 'Inter', sans-serif;
                 background-color: #f4f4f9;
@@ -152,19 +145,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             h1 {
                 color: #333;
                 font-size: 2.5em;
@@ -176,10 +156,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 font-size: 1.8em;
                 margin-bottom: 15px;
             }
-
-
-
-
 
 
 
@@ -264,13 +240,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
 
-
-
-
-
-
-
-
             input {
                 width: 87%;
                 padding: 12px;
@@ -279,10 +248,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 border: 1px solid #ddd;
                 font-size: 16px;
             }
-
-
-
-
 
 
             button {
@@ -305,19 +270,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 }
 
 
-
-
-
-
                 .contratos li {
-                    width: 90%; /* Reduz a largura em telas menores */
+                    width: 90%; 
                     height: auto;
                     margin: 15px 0;
                 }
-
-
-
-
 
 
 
@@ -328,10 +285,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 }
 
                 select {
-                    width: 100%; /* Ajuste para ocupar toda a largura */
+                    width: 100%; 
                     margin-bottom: 10px;
                 }
-
 
 
                 .novo-btn {
@@ -356,27 +312,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
 
-
-
-
      th, td {
          padding: 10px;
          text-align: left;
      }
 
-     /* Alinhando Status mais à direita, próximo de Ações */
      th:nth-child(2),
      td:nth-child(2) {
          text-align: center;
          width: 1%;
      }
 
-     /* Alinhando Ações sem colar na direita */
      th:nth-child(3),
      td:nth-child(3) {
          text-align: right;
          width: 26%;
-         padding-right: 15px; /* Espaço entre a borda direita e o conteúdo */
+         padding-right: 15px; 
      }
 
      .status {
@@ -414,35 +365,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
      th:nth-child(3) {
          text-align: left;
-         padding-left: 100px; /* Move o texto um pouco para a esquerda */
+         padding-left: 100px; 
      }
 
      td:nth-child(3) {
-         text-align: right; /* Mantém o conteúdo alinhado à direita */
+         text-align: right; 
      }
 
         </style>
 
 
 
-
-
-
-
-
-
-
-
-
         <style>
-        /* RESET GLOBAL */
+        
     * {
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
     }
 
-    /* FONTES */
+    
     body {
     font-family: 'Inter', sans-serif;
     background-color: #f9f9f9;
@@ -453,9 +395,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
     header {
         display: flex;
-        align-items: center; /* Alinha os elementos verticalmente no centro */
-        justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-        padding: 20px 200px; /* Espaço interno do header */
+        align-items: center; 
+        justify-content: space-between; 
+        padding: 20px 200px; 
         background: #fff;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
         position: sticky;
@@ -476,7 +418,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         margin-top: 10px;
     }
 
-    /* NAVIGATION BAR */
+ 
     nav {
     background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
     padding: 17px 30px;
@@ -512,12 +454,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
-    /* CONTAINER PRINCIPAL */
+   
     .container {
     padding: 50px 200px !important;
     }
 
-    /* BOX PRINCIPAL */
     .box {
     background: linear-gradient(145deg, #ffffff, #f1f1f1);
     padding: 45px;
@@ -539,7 +480,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     margin-bottom: 10px;
     }
 
-    /* BOTÕES */
     .btn {
     background-color: #3498db;
     color: white;
@@ -564,7 +504,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     background-color: #16a085;
     }
 
-    /* SEARCH AREA */
     .search-container {
     display: flex;
 
@@ -606,7 +545,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     background-color: #2980b9;
     }
 
-    /* TABELAS */
     table {
     width: 100%;
     border-collapse: collapse;
@@ -654,7 +592,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     color: white;
     }
 
-    /* CARDS GRÁFICOS */
     .card {
     background: #ffffff;
     padding: 35px;
@@ -681,7 +618,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     padding: 25px;
     }
 
-    /* FOOTER */
     footer {
 
     color: #7f8c8d;
@@ -695,7 +631,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     font-weight: 500;
     }
 
-    /* RESPONSIVO */
     @media (max-width: 1200px) {
     .container {
         padding: 20px 40px;
@@ -828,12 +763,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
 
-
-
-
-
-
-
             .acao-btn {
                 background-color: #0974a3;
                 color: white;
@@ -932,7 +861,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         nav ul {
             flex-wrap: wrap;
-            justify-content: center; /* Centraliza os itens no menu */
+            justify-content: center; 
         }
 
         table th, table td {
@@ -943,15 +872,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         table th:nth-child(1), table td:nth-child(1) {
             text-align: left;
-            width: 50%; /* Mais espaço para o nome do projeto */
+            width: 50%;
         }
 
         table th:nth-child(2), table td:nth-child(2) {
-            width: 20%; /* Ajusta o espaço do status */
+            width: 20%;
         }
 
         table th:nth-child(3), table td:nth-child(3) {
-            width: 30%; /* Ajusta o espaço das ações */
+            width: 30%; 
         }
     }
 
@@ -984,7 +913,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         table th:nth-child(1), table td:nth-child(1) {
             text-align: left;
-            width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+            width: 60%; 
         }
 
         table th:nth-child(2), table td:nth-child(2) {
@@ -1014,37 +943,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         table th:nth-child(1), table td:nth-child(1) {
             text-align: left;
-            width: 70%; /* Prioriza espaço para o nome do projeto */
+            width: 70%; 
         }
 
         table th:nth-child(2), table td:nth-child(2) {
-            width: 15%; /* Reduz espaço do status */
+            width: 15%; 
         }
 
         table th:nth-child(3), table td:nth-child(3) {
-            width: 15%; /* Reduz espaço das ações */
+            width: 15%; 
         }
     }
 
 
 
     .novo-btn, .excluir-btn {
-    display: inline-block; /* Exibe os botões na mesma linha */
-    padding: 8px 12px; /* Ajusta o espaçamento interno */
-    margin: 0 5px; /* Espaçamento entre os botões */
-    border: none; /* Remove borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    text-decoration: none; /* Remove sublinhado */
-    font-size: 14px; /* Ajusta o tamanho da fonte */
-    cursor: pointer; /* Mostra o ponteiro de clique */
-    transition: background-color 0.3s ease; /* Suaviza o hover */
-    color: white; /* Cor do texto */
+    display: inline-block; 
+    padding: 8px 12px; 
+    margin: 0 5px; 
+    border: none; 
+    border-radius: 5px; 
+    text-decoration: none;
+    font-size: 14px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white; 
 }
 
 
 td {
-    vertical-align: middle; /* Alinha o conteúdo no meio da célula */
-    white-space: nowrap; /* Evita quebra de linha nos botões */
+    vertical-align: middle; 
+    white-space: nowrap; 
 }
 
 
@@ -1055,9 +984,7 @@ padding-top: 25px;
 
 }
 
-
         </style>
-
 
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -1120,9 +1047,7 @@ padding-top: 25px;
       </main>
       </div>
       </div>
-      <!--<footer>
-          &copy; 2024 Tática
-      </footer>-->
+    
       <footer>
       <div class="copyright">&copy; 2024 Tática</div>
       <div class="footer-image"></div>
@@ -1139,3 +1064,4 @@ padding-top: 25px;
     exit();
 }
 ?>
+
