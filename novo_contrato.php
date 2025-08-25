@@ -32,7 +32,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         return null;
     }
 
-    // Buscar tipos de projeto
     $sql_tipos_projeto = "SELECT id, nome FROM tipos_projeto ORDER BY nome ASC";
     $tipos_projeto_result = $conn->query($sql_tipos_projeto);
     $tipos_projeto = [];
@@ -40,7 +39,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         $tipos_projeto = $tipos_projeto_result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Buscar clientes
     $sql_clientes = "SELECT id, nome FROM users WHERE role = 'user'";
     $clientes_result = $conn->query($sql_clientes);
     $clientes = [];
@@ -112,7 +110,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             font-family: Inter, sans-serif;
             background-color: #f4f4f9;
             background: url('boss/img/background/bg-7.png') no-repeat center center fixed;
-            background-size: cover; /* Faz com que a imagem cubra 100% da tela */
+            background-size: cover; 
             padding: 20px;
             color: #333;
             margin: 0;
@@ -266,8 +264,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
 
-
-
 select {
   width: 250px;
   padding: 10px;
@@ -329,28 +325,28 @@ select:disabled {
 
 
 input[type="file"] {
-    appearance: none; /* Remove o estilo padrão */
+    appearance: none; 
     background-color: #fff;
-    color: white; /* Cor do texto */
-    border: none; /* Remove bordas */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px;
 }
 
 input[type="file"]::file-selector-button {
-    background-color: #0974a3; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove bordas do botão */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    background-color: #0974a3; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background-color: #0056b3; 
 }
 
 
@@ -374,27 +370,27 @@ a.btn-back:hover {
 }
 
 input[type="file"] {
-    appearance: none; /* Remove o estilo padrão */
-    color: Black; /* Cor do texto */
-    border: none; /* Remove bordas */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    appearance: none; 
+    color: Black; 
+    border: none;
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer;
+    font-size: 14px;
 }
 
 input[type="file"]::file-selector-button {
-    background-color: #0974a3; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove bordas do botão */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    background-color: #0974a3; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background-color: #0056b3; 
 }
     </style>
 </head>
@@ -498,18 +494,17 @@ $(document).ready(function() {
 
    function updateChecklist(tipoEmpreendimento) {
      const checklistContainer = document.getElementById('checklist-container');
-     console.log(checklistContainer);  // Verifique se o contêiner existe
-     checklistContainer.innerHTML = ''; // Limpa o checklist atual
+     console.log(checklistContainer);  
+     checklistContainer.innerHTML = ''; 
 
      $.ajax({
          url: 'get_checklist_preset.php',
          method: 'GET',
          data: { tipo_id: tipoEmpreendimento },
          success: function(response) {
-             console.log(response);  // Verifique a resposta da requisição
+             console.log(response);  
              const checklistItems = JSON.parse(response);
 
-             // Exibe os itens no DOM
              checklistItems.forEach((item, index) => {
                  const newChecklistItem = document.createElement('div');
                  newChecklistItem.classList.add('checklist-item');
@@ -584,3 +579,4 @@ $(document).ready(function() {
     exit();
 }
 ?>
+
