@@ -14,10 +14,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Inicializando a variável de pesquisa
     $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-    // Ajustando a consulta SQL com base na pesquisa
     $sql = "
     SELECT contratos.*,
            (SELECT COUNT(*) FROM checklist WHERE contrato_id = contratos.id AND data IS NOT NULL) AS concluido,
@@ -61,14 +59,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <style>
-    /* RESET GLOBAL */
 * {
 margin: 0px;
 padding: 0;
 box-sizing: border-box;
 }
 
-/* FONTES */
 body {
 font-family: 'Inter', sans-serif;
 background-color: #f9f9f9;
@@ -79,9 +75,9 @@ overflow-x: hidden;
 
 header {
     display: flex;
-    align-items: center; /* Alinha os elementos verticalmente no centro */
-    justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-    padding: 20px 200px; /* Espaço interno do header */
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px 200px; 
     background: #fff;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
@@ -102,7 +98,6 @@ header h1 {
     margin-top: 10px;
 }
 
-/* NAVIGATION BAR */
 nav {
 background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
 padding: 4px 30px;
@@ -139,12 +134,10 @@ color: #2c3e50;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
 padding: 50px 80px;
 }
 
-/* BOX PRINCIPAL */
 .box {
 background: linear-gradient(145deg, #ffffff, #f1f1f1);
 padding: 45px;
@@ -166,7 +159,6 @@ color: #2c3e50;
 margin-bottom: 25px;
 }
 
-/* BOTÕES */
 .btn {
 background-color: #3498db;
 color: white;
@@ -191,7 +183,6 @@ background-color: #1abc9c;
 background-color: #16a085;
 }
 
-/* SEARCH AREA */
 .search-container {
 display: flex;
 
@@ -233,7 +224,6 @@ margin-left: 10px;
 background-color: #2980b9;
 }
 
-/* TABELAS */
 table {
 width: 100%;
 border-collapse: collapse;
@@ -284,7 +274,6 @@ color: white;
 padding: 8px 10px;
 }
 
-/* CARDS GRÁFICOS */
 .card {
 background: #ffffff;
 padding: 35px;
@@ -311,7 +300,6 @@ font-size: 1.3rem;
 padding: 25px;
 }
 
-/* FOOTER */
 footer {
 
 color: #7f8c8d;
@@ -324,7 +312,6 @@ font-size: 1.2rem;
 font-weight: 500;
 }
 
-/* RESPONSIVO */
 @media (max-width: 1200px) {
 .container {
     padding: 20px 40px;
@@ -449,7 +436,7 @@ footer {
 
         footer .copyright {
             position: relative;
-            margin-bottom: 20px; /* Espaçamento acima da imagem */
+            margin-bottom: 20px; 
         }
 
         footer .footer-image {
@@ -461,14 +448,6 @@ footer {
             background-size: cover;
             margin: 0;
         }
-
-
-
-
-
-
-
-
 
 
         .acao-btn {
@@ -547,9 +526,6 @@ th:nth-child(2), td:nth-child(2) {
   }
 
 
-
-
-
   @media (max-width: 1200px) {
     header {
         padding: 20px;
@@ -569,7 +545,7 @@ th:nth-child(2), td:nth-child(2) {
 
     nav ul {
         flex-wrap: wrap;
-        justify-content: center; /* Centraliza os itens no menu */
+        justify-content: center; 
     }
 
     table th, table td {
@@ -580,15 +556,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 50%; /* Mais espaço para o nome do projeto */
+        width: 50%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 20%; /* Ajusta o espaço do status */
+        width: 20%;
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 30%; /* Ajusta o espaço das ações */
+        width: 30%; 
     }
 }
 
@@ -613,7 +589,7 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+        width: 60%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
@@ -643,15 +619,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 70%; /* Prioriza espaço para o nome do projeto */
+        width: 70%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 15%; /* Reduz espaço do status */
+        width: 15%;
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 15%; /* Reduz espaço das ações */
+        width: 15%; 
     }
 }
 
@@ -687,8 +663,6 @@ th:nth-child(2), td:nth-child(2) {
                 <a href="novo_contrato.php" class="novo-btn">+ Novo</a>
 
             </div>
-
-
 
 
             <table>
@@ -744,3 +718,4 @@ th:nth-child(2), td:nth-child(2) {
     exit();
 }
 ?>
+
