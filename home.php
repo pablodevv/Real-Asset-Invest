@@ -15,8 +15,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
     $cliente_id = $_SESSION['id'];
 
 
-
-    // Exclusão de documento
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['excluir_documento'])) {
         $documento_id = intval($_POST['documento_id']);
 
@@ -232,8 +230,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
   }
 
 
-
-
         .documentos { list-style: none; padding: 0; margin-bottom: 20px; }
         .documentos li { display: flex; justify-content: space-between; margin-bottom: 10px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
         .status { padding: 5px 15px; border-radius: 5px; font-weight: bold; }
@@ -242,12 +238,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
         .reprovado { background-color: #e74c3c; color: white; }
 
 
-
     </style>
-
-
-
-
 
 
 
@@ -260,7 +251,6 @@ h2 {
     font-size: 1.8em;
     margin-bottom: 15px;
 }
-
 
 
 
@@ -344,7 +334,7 @@ h2 {
 
 
     .contratos li {
-        width: 90%; /* Reduz a largura em telas menores */
+        width: 90%; 
         height: auto;
         margin: 15px 0;
     }
@@ -360,7 +350,7 @@ h2 {
     }
 
     select {
-        width: 100%; /* Ajuste para ocupar toda a largura */
+        width: 100%; 
         margin-bottom: 10px;
     }
 
@@ -388,26 +378,13 @@ h2 {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <style>
-/* RESET GLOBAL */
 * {
 margin: 0px;
 padding: 0;
 box-sizing: border-box;
 }
 
-/* FONTES */
 body {
 font-family: 'Inter', sans-serif;
 background-color: #f9f9f9;
@@ -418,9 +395,9 @@ overflow-x: hidden;
 
 header {
 display: flex;
-align-items: center; /* Alinha os elementos verticalmente no centro */
-justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-padding: 20px 200px; /* Espaço interno do header */
+align-items: center; 
+justify-content: space-between; 
+padding: 20px 200px; 
 background: #fff;
 box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
 position: sticky;
@@ -441,7 +418,6 @@ font-weight: 700;
 margin-top: 10px;
 }
 
-/* NAVIGATION BAR */
 nav {
 background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
 padding: 17px 30px;
@@ -477,13 +453,11 @@ color: #2c3e50;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
 padding: 50px 200px;
 min-height: 570px;
 }
 
-/* BOX PRINCIPAL */
 .box {
 background: linear-gradient(145deg, #ffffff, #f1f1f1);
 padding: 45px;
@@ -505,7 +479,6 @@ color: #2c3e50;
 margin-bottom: 25px;
 }
 
-/* BOTÕES */
 .btn {
 background-color: #3498db;
 color: white;
@@ -530,7 +503,6 @@ background-color: #1abc9c;
 background-color: #16a085;
 }
 
-/* SEARCH AREA */
 .search-container {
 display: flex;
 
@@ -572,7 +544,6 @@ margin-left: 10px;
 background-color: #2980b9;
 }
 
-/* TABELAS */
 table {
 width: 100%;
 border-collapse: collapse;
@@ -620,7 +591,6 @@ background-color: #dc3545;
 color: white;
 }
 
-/* CARDS GRÁFICOS */
 .card {
 background: #ffffff;
 padding: 35px;
@@ -647,7 +617,6 @@ font-size: 1.3rem;
 padding: 25px;
 }
 
-/* FOOTER */
 footer {
 
 color: #7f8c8d;
@@ -661,7 +630,6 @@ font-size: 1.2rem;
 font-weight: 500;
 }
 
-/* RESPONSIVO */
 @media (max-width: 1200px) {
 .container {
 padding: 20px 40px;
@@ -779,7 +747,7 @@ footer {
 
     footer .copyright {
         position: relative;
-        margin-bottom: 20px; /* Espaçamento acima da imagem */
+        margin-bottom: 20px; 
     }
 
     footer .footer-image {
@@ -791,14 +759,6 @@ footer {
         background-size: cover;
         margin: 0;
     }
-
-
-
-
-
-
-
-
 
 
     .acao-btn {
@@ -878,8 +838,6 @@ width: 1%;
 
 
 
-
-
 @media (max-width: 1200px) {
 header {
     padding: 20px;
@@ -899,7 +857,7 @@ header h1 {
 
 nav ul {
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os itens no menu */
+    justify-content: center; 
 }
 
 table th, table td {
@@ -910,15 +868,15 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 50%; /* Mais espaço para o nome do projeto */
+    width: 50%; 
 }
 
 table th:nth-child(2), table td:nth-child(2) {
-    width: 20%; /* Ajusta o espaço do status */
+    width: 20%; 
 }
 
 table th:nth-child(3), table td:nth-child(3) {
-    width: 30%; /* Ajusta o espaço das ações */
+    width: 30%;
 }
 }
 
@@ -942,7 +900,7 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+    width: 60%;
 }
 
 table th:nth-child(2), table td:nth-child(2) {
@@ -972,46 +930,42 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 70%; /* Prioriza espaço para o nome do projeto */
+    width: 70%; 
 }
 
 table th:nth-child(2), table td:nth-child(2) {
-    width: 15%; /* Reduz espaço do status */
+    width: 15%; 
 }
 
 table th:nth-child(3), table td:nth-child(3) {
-    width: 15%; /* Reduz espaço das ações */
+    width: 15%; 
 }
 }
-
-
-
-
 
 
 
 input[type="file"] {
-    appearance: none; /* Remove o estilo padrão */
-    color: Black; /* Cor do texto */
-    border: none; /* Remove bordas */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    appearance: none; 
+    color: Black; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button {
-    background-color: #0974a3; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove bordas do botão */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    background-color: #0974a3; 
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background-color: #0056b3; 
 }
 
 </style>
@@ -1107,3 +1061,4 @@ input[type="file"]::file-selector-button:hover {
     exit();
 }
 ?>
+
