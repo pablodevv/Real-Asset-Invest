@@ -14,10 +14,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Inicializando a variável de pesquisa
     $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-    // Ajustando a consulta SQL com base na pesquisa
     $sql = "SELECT * FROM contratos WHERE nome_contrato LIKE ?";
 
     $stmt = $conn->prepare($sql);
@@ -54,7 +52,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f4f4f9;
-            /* padding: 6% 14% 7%;*/
             color: #333;
         }
 
@@ -127,7 +124,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         table th, table td {
             padding: 12px;
             text-align: left;
-            /*border: 1px solid #ddd;*/
             font-size: 1.1em;
             border-bottom: 1px solid #ddd;
         }
@@ -236,7 +232,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         footer .copyright {
             position: relative;
-            margin-bottom: 20px; /* Espaçamento acima da imagem */
+            margin-bottom: 20px; 
         }
 
         footer .footer-image {
@@ -247,14 +243,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             background: url('boss/img/background/bg-6.png') no-repeat center center;
             background-size: cover;
         }
-
-
-        /*footer {
-            text-align: center;
-            font-size: 0.9em;
-            margin-top: 40px;
-            color: #555;
-        }*/
 
 
         @media (max-width: 768px) {
@@ -287,9 +275,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             border: 1px solid #ddd;
             font-size: 16px;
         }
-
-
-
 
 
 
@@ -330,7 +315,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
             .contratos li {
-                width: 90%; /* Reduz a largura em telas menores */
+                width: 90%; 
                 height: auto;
                 margin: 15px 0;
             }
@@ -366,7 +351,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
             select {
-                width: 100%; /* Ajuste para ocupar toda a largura */
+                width: 100%; 
                 margin-bottom: 10px;
             }
 
@@ -403,7 +388,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         }
 
 
-
         table {
      width: 100%;
      border-collapse: collapse;
@@ -414,19 +398,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
      text-align: left;
  }
 
- /* Alinhando Status mais à direita, próximo de Ações */
  th:nth-child(2),
  td:nth-child(2) {
      text-align: center;
      width: 1%;
  }
 
- /* Alinhando Ações sem colar na direita */
  th:nth-child(3),
  td:nth-child(3) {
      text-align: right;
      width: 26%;
-     padding-right: 15px; /* Espaço entre a borda direita e o conteúdo */
+     padding-right: 15px; 
  }
 
  .status {
@@ -464,11 +446,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
  th:nth-child(3) {
      text-align: left;
-     padding-left: 100px; /* Move o texto um pouco para a esquerda */
+     padding-left: 100px; 
  }
 
  td:nth-child(3) {
-     text-align: right; /* Mantém o conteúdo alinhado à direita */
+     text-align: right; 
  }
 
 
@@ -480,16 +462,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 </head>
 <body>
     <div class="padding-body">
-        <!--<header>
-            <h1>Área Administrativa - Gerenciamento de Contratos</h1>
-        </header>-->
-
+      
         <header style="display: flex; justify-content: space-between; align-items: center; background: rgb(255,255,255,0); padding: 0px 8px;">
-        <!-- Logo alinhado à esquerda -->
         <div style="max-width: 460px;">
             <img src="boss/img/icons/logo2.png" alt="Logo" style="height: auto; max-height: 125px; width: 100%; object-fit: contain;">
         </div>
-        <!-- Título alinhado à direita -->
         <div class="box2"><h1 style="font-size: 1.5em; margin: 0; text-align: right; padding: 5px 20px 5px; color: #023c56;"><a style="font-weight: 800;">Área Administrativa ></a><a style="font-weight:300"> Gerenciamento de Projetos</a></h1></div>
         </header>
 
@@ -523,10 +500,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                       <button type="submit" class="btn-submit" style="background-color: #0974a3; width: 150px;">Buscar</button>
                 </form>
 
-
-
             <table>
-
 
                 <thead>
                     <tr>
@@ -554,16 +528,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                     <?php endif; ?>
                 </tbody>
             </table>
-            <!--<div style="display: flex; justify-content: space-between; align-items: center; background: rgb(255,255,255,0); padding: 0px 20px;">
-                <a href="novo_contrato.php" class="novo-btn" >+ NOVO</a>-->
+           
 
             </div>
         </main>
         </div>
     </div>
-        <!--<footer>
-            &copy; 2024 Tática
-        </footer>-->
+    
         <footer>
         <div class="copyright">&copy; 2024 Tática</div>
         <div class="footer-image"></div>
@@ -582,3 +553,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     exit();
 }
 ?>
+
