@@ -11,36 +11,36 @@
             font-family: 'inter', sans-serif;
             margin-left: 12.5%;
             padding: 0;
-            background: url('boss/img/background/bg-3.png') no-repeat center center fixed; /* Fundo de página */
-            background-size: cover; /* Faz com que a imagem cubra 100% da tela */
+            background: url('boss/img/background/bg-3.png') no-repeat center center fixed; 
+            background-size: cover; 
             display: flex;
-            flex-direction: column; /* Empilha os elementos verticalmente */
-            justify-content: center; /* Centraliza os elementos verticalmente */
-            align-items: flex-start; /* Alinha os elementos horizontalmente à esquerda */
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: flex-start; 
             height: 100vh;
-            padding-left: 0px; /* Espaçamento da borda esquerda */
+            padding-left: 0px;
         }
 
         .logo {
             width: 100%;
-            max-width: 380px; /* Mesmo tamanho máximo do container */
-            margin-bottom: 20px; /* Espaçamento entre o logo e o container */
+            max-width: 380px; 
+            margin-bottom: 20px; 
             margin-left: 5.75%;
             margin-top: -90px;
         }
 
         .logo img {
-            width: 100%; /* Largura total do container */
-            height: auto; /* Mantém a proporção da imagem */
+            width: 100%; 
+            height: auto; 
         }
 
         .container {
-            background: linear-gradient(12deg, rgba(31,189,147,0.1) 0%, rgba(28,168,131,0) 50%); /* gradiente transparente */
+            background: linear-gradient(12deg, rgba(31,189,147,0.1) 0%, rgba(28,168,131,0) 50%); 
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 13px 20px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 31.25%; /* Largura máxima */
+            max-width: 31.25%; 
             text-align: center;
         }
 
@@ -97,7 +97,7 @@
             position: absolute;
             bottom: 20px;
             width: auto;
-            text-align: left; /* Texto alinhado à esquerda */
+            text-align: left; 
             color: #fff;
             font-size: 12px;
             margin-left: 6.1%;
@@ -116,7 +116,7 @@
         @media (max-width: 768px) {
             body {
                 margin-left: 0;
-                align-items: center; /* Centraliza os itens horizontalmente */
+                align-items: center; 
                 padding: 20px;
             }
 
@@ -126,7 +126,7 @@
             }
 
             .container {
-                max-width: 90%; /* Reduz o tamanho do container em telas menores */
+                max-width: 90%; 
                 padding: 20px;
             }
 
@@ -164,12 +164,10 @@
     </style>
 </head>
 <body>
-    <!-- Logo flutuante acima do container -->
     <div class="logo">
         <img src="boss/img/icons/logo.png" alt="Logo RealAssetInvest">
     </div>
 
-    <!-- Container do formulário -->
     <div class="container">
         <form action="login.php" method="post">
             <label for="usuario">Usuário:</label>
@@ -192,9 +190,9 @@
         </form>
     </div>
 
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 RealAssetInvest - Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
+
