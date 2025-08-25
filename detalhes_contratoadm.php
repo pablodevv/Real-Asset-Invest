@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] == 'admin') {
 
   setlocale(LC_TIME, 'pt_BR.UTF-8', 'pt_BR', 'Portuguese_Brazil.1252');
@@ -321,8 +320,6 @@ $row = $result->fetch_assoc();
 
 
 
-
-
                             </div>
                             <div class="item-imagens">
                                 <?php
@@ -363,3 +360,4 @@ $row = $result->fetch_assoc();
     exit();
 }
 ?>
+
