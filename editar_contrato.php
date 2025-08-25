@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $data_conclusao = $item['data_conclusao'];
 
                 if (empty($data_conclusao) || $data_conclusao == '0000-00-00') {
-                   $data_conclusao = $item['data'];  // Mantém a data anterior se estiver vazia ou inválida
+                   $data_conclusao = $item['data'];  
                }
 
                 $sql_update_item = "UPDATE checklist SET item = ?, data = ? WHERE id = ?";
@@ -115,13 +115,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $upload_dir = "uploads/capas/";
     $file_path = $upload_dir . uniqid() . "_" . $image_name;
 
-    // Cria o diretório se não existir
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
 
     if (move_uploaded_file($image_tmp, $file_path)) {
-        // Atualiza o caminho da imagem no banco de dados
         $sql_update_capa = "UPDATE contratos SET imagem_capa = ? WHERE id = ?";
         $stmt_update_capa = $conn->prepare($sql_update_capa);
         $stmt_update_capa->bind_param("si", $file_path, $id_contrato);
@@ -168,9 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
-
-
 
 
 
@@ -289,15 +284,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-
-
-
-
-
-
-
-
-
         textarea {
             resize: vertical;
             height: 120px;
@@ -375,8 +361,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-
-
         .remover-item {
   background-color: #e74c3c;
   color: white;
@@ -401,27 +385,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 input[type="file"] {
-    appearance: none; /* Remove o estilo padrão */
-    color: Black; /* Cor do texto */
-    border: none; /* Remove bordas */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    appearance: none; 
+    color: Black; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button {
-    background-color: #0974a3; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove bordas do botão */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    cursor: pointer; /* Cursor de "mãozinha" */
-    font-size: 14px; /* Tamanho da fonte */
+    background-color: #0974a3; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 14px; 
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background-color: #0056b3; 
 }
 
     </style>
@@ -466,7 +450,6 @@ input[type="file"]::file-selector-button:hover {
                     </select>
                 </div>
 
-                <!-- Adicionar Novos Clientes -->
   <div class="form-group">
       <h3>Adicionar Novos Clientes</h3>
       <div id="clientes-container">
@@ -489,7 +472,6 @@ input[type="file"]::file-selector-button:hover {
       </button>
   </div>
 
-  <!-- Lista de Clientes Vinculados -->
   <div class="form-group">
       <label for="clientes_vinculados">Clientes Vinculados:</label>
       <ul id="clientes-vinculados-list">
@@ -502,7 +484,6 @@ input[type="file"]::file-selector-button:hover {
 
 <script>
 document.getElementById('adicionar-cliente').addEventListener('click', function () {
-// Cria uma mensagem de sucesso
 let successMessage = document.createElement('div');
 successMessage.textContent = 'Cliente adicionado com sucesso!';
 successMessage.style.cssText = `
@@ -517,10 +498,8 @@ successMessage.style.cssText = `
     z-index: 1000;
 `;
 
-// Adiciona a mensagem ao corpo da página
 document.body.appendChild(successMessage);
 
-// Remove a mensagem após 3 segundos
 setTimeout(function () {
     successMessage.remove();
 }, 3000);
@@ -528,10 +507,7 @@ setTimeout(function () {
 
 
 
-
 </script>
-
-
 
                 <div class="form-group">
                     <h2>Itens do Checklist:</h2>
@@ -577,10 +553,8 @@ setTimeout(function () {
   button.addEventListener('click', function() {
       const itemId = this.getAttribute('data-id');
 
-      // Remover o item da interface
       this.closest('.checklist-item').remove();
 
-      // Remover o item do banco de dados (envio via AJAX ou formulário)
       const formData = new FormData();
       formData.append('remover_item', itemId);
 
@@ -590,25 +564,17 @@ setTimeout(function () {
       })
       .then(response => response.text())
       .then(data => {
-          console.log(data); // Mensagem de sucesso ou erro
+          console.log(data); 
       });
   });
 });
 
-
-
                     </script>
-
 
                     <div id="novo-item-checklist"></div>
 
-
                     <button type="button" id="adicionar-item">Adicionar Item</button>
                 </div>
-
-
-
-
 
 
                 <button type="submit" class="btn-submit">Salvar Alterações</button>
@@ -646,8 +612,7 @@ setTimeout(function () {
 });
 
 
-
-
     </script>
 </body>
 </html>
+
