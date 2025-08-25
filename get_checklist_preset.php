@@ -28,9 +28,9 @@ if (isset($_GET['tipo_id'])) {
     if ($result->num_rows > 0) {
         $checklist_items = [];
         while ($row = $result->fetch_assoc()) {
-            $checklist_items[] = $row['item']; // Certifique-se de que seja apenas o valor da coluna 'item'
+            $checklist_items[] = $row['item']; 
         }
-        echo json_encode($checklist_items); // Retornar os itens como JSON
+        echo json_encode($checklist_items); 
     } else {
         echo "Nenhum item encontrado para o tipo_id: $tipo_id";
     }
@@ -42,3 +42,4 @@ if (isset($_GET['tipo_id'])) {
 }
 
 ?>
+
