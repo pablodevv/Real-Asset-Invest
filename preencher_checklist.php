@@ -171,32 +171,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         h2 {
             color: #333;
             font-size: 1.8em;
             margin-bottom: 15px;
         }
-
-
 
 
 
@@ -237,10 +216,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
 
-
-
-
-
         .box2 {
             background: #ebeef5;
             padding: 5px;
@@ -254,8 +229,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         }
 
-
-
         input {
             width: 87%;
             padding: 12px;
@@ -264,10 +237,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             border: 1px solid #ddd;
             font-size: 16px;
         }
-
-
-
-
 
 
         button {
@@ -292,7 +261,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
             .contratos li {
-                width: 90%; /* Reduz a largura em telas menores */
+                width: 90%; 
                 height: auto;
                 margin: 15px 0;
             }
@@ -306,11 +275,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
             select {
-                width: 100%; /* Ajuste para ocupar toda a largura */
+                width: 100%; 
                 margin-bottom: 10px;
             }
-
-
 
 
         }
@@ -328,8 +295,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
 
         }
-
-
 
 
  .status {
@@ -360,25 +325,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     </style>
 
 
-
-
-
-
-
-
-
-
-
-
     <style>
-    /* RESET GLOBAL */
+    
 * {
 margin: 0px;
 padding: 0;
 box-sizing: border-box;
 }
 
-/* FONTES */
+
 body {
 font-family: 'Inter', sans-serif;
 background-color: #f9f9f9;
@@ -389,9 +344,9 @@ overflow-x: hidden;
 
 header {
     display: flex;
-    align-items: center; /* Alinha os elementos verticalmente no centro */
-    justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-    padding: 20px 200px; /* Espaço interno do header */
+    align-items: center;
+    justify-content: space-between; 
+    padding: 20px 200px; 
     background: #fff;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
@@ -412,7 +367,6 @@ header h1 {
     margin-top: 10px;
 }
 
-/* NAVIGATION BAR */
 nav {
 background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
 padding: 17px 30px;
@@ -448,12 +402,10 @@ color: #2c3e50;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
 padding: 50px 80px;
 }
 
-/* BOX PRINCIPAL */
 .box {
 background: linear-gradient(145deg, #ffffff, #f1f1f1);
 padding: 45px;
@@ -475,7 +427,6 @@ color: #2c3e50;
 margin-bottom: 25px;
 }
 
-/* BOTÕES */
 .btn {
 background-color: #3498db;
 color: white;
@@ -542,7 +493,6 @@ margin-left: 10px;
 background-color: #2980b9;
 }
 
-/* TABELAS */
 table {
 width: 100%;
 border-collapse: collapse;
@@ -590,7 +540,6 @@ background-color: #dc3545;
 color: white;
 }
 
-/* CARDS GRÁFICOS */
 .card {
 background: #ffffff;
 padding: 35px;
@@ -617,7 +566,6 @@ font-size: 1.3rem;
 padding: 25px;
 }
 
-/* FOOTER */
 footer {
 background-color: #ffffff;
 color: #7f8c8d;
@@ -631,7 +579,6 @@ font-size: 1.2rem;
 font-weight: 500;
 }
 
-/* RESPONSIVO */
 @media (max-width: 1200px) {
 .container {
     padding: 20px 40px;
@@ -749,7 +696,7 @@ footer {
 
         footer .copyright {
             position: relative;
-            margin-bottom: 20px; /* Espaçamento acima da imagem */
+            margin-bottom: 20px; 
         }
 
         footer .footer-image {
@@ -761,14 +708,6 @@ footer {
             background-size: cover;
             margin: 0;
         }
-
-
-
-
-
-
-
-
 
 
         .acao-btn {
@@ -848,8 +787,6 @@ th:nth-child(2), td:nth-child(2) {
 
 
 
-
-
   @media (max-width: 1200px) {
     header {
         padding: 20px;
@@ -869,7 +806,7 @@ th:nth-child(2), td:nth-child(2) {
 
     nav ul {
         flex-wrap: wrap;
-        justify-content: center; /* Centraliza os itens no menu */
+        justify-content: center; 
     }
 
     table th, table td {
@@ -880,15 +817,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 50%; /* Mais espaço para o nome do projeto */
+        width: 50%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 20%; /* Ajusta o espaço do status */
+        width: 20%; 
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 30%; /* Ajusta o espaço das ações */
+        width: 30%; 
     }
 }
 
@@ -912,7 +849,7 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+        width: 60%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
@@ -942,15 +879,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 70%; /* Prioriza espaço para o nome do projeto */
+        width: 70%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 15%; /* Reduz espaço do status */
+        width: 15%; 
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 15%; /* Reduz espaço das ações */
+        width: 15%; 
     }
 }
 
@@ -995,14 +932,13 @@ th:nth-child(2), td:nth-child(2) {
                 <?php echo htmlspecialchars($item['item']); ?>
 
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-    <!-- Campo de Texto e Botão Salvar -->
+    
     <form class="edit-form" method="POST" style="display: flex; align-items: center; gap: 5px;">
         <input type="hidden" name="edit_item_id" value="<?php echo $item['id']; ?>">
         <input type="text" name="edit_item_text" value="<?php echo htmlspecialchars($item['item']); ?>">
         <button type="submit" class="acao-btn">Salvar</button>
     </form>
 
-    <!-- Botão Excluir -->
     <form method="POST" style="display: inline;">
         <input type="hidden" name="delete_item" value="<?php echo $item['id']; ?>">
         <a href="?tipo_projeto_id=<?php echo $tipo_id; ?>&delete_item_id=<?php echo $item['id']; ?>" class="acao-btn2">
@@ -1021,26 +957,24 @@ th:nth-child(2), td:nth-child(2) {
 
 @media (max-width: 768px) {
     .acao-btn, .acao-btn2 {
-        padding: 6px 10px; /* Reduz o tamanho dos botões */
-        font-size: 12px;   /* Diminui a fonte */
+        padding: 6px 10px; 
+        font-size: 12px;   
     }
 }
 
-/* Responsividade para telas muito pequenas (máximo 480px) */
 @media (max-width: 480px) {
-    /* Botões ficam empilhados verticalmente */
     div {
         flex-direction: column;
         gap: 0px;
     }
 
     .acao-btn, .acao-btn2 {
-        width: 100%; /* Botões ocupam toda a largura */
+        width: 100%; 
         text-align: center;
     }
 
     input[type="text"] {
-        width: 100%; /* Campo de texto ocupa toda a largura */
+        width: 100%; 
     }
 }
 
@@ -1067,3 +1001,4 @@ th:nth-child(2), td:nth-child(2) {
       </footer>
 </body>
 </html>
+
