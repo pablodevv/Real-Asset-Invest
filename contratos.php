@@ -14,10 +14,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Captura o tipo de empreendimento selecionado
-    $tipo_empreendimento = $_GET['tipo_empreendimento'] ?? ''; // Valor padrão vazio
+    $tipo_empreendimento = $_GET['tipo_empreendimento'] ?? ''; 
 
-    // Query para buscar tipos de projeto
     $sql_tipos_projeto = "SELECT * FROM tipos_projeto";
     $result_tipos_projeto = $conn->query($sql_tipos_projeto);
     $tipos_projeto = [];
@@ -27,13 +25,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
         }
     }
 
-    // Query inicial para buscar contratos, com possibilidade de filtro por tipo de empreendimento
     $sql_contratos = "SELECT c.*, c.imagem_capa FROM contratos c
                   JOIN contratos_clientes cc ON c.id = cc.contrato_id
                   WHERE cc.cliente_id = {$_SESSION['id']}";
 
 
-    // Adiciona o filtro de tipo de empreendimento, se selecionado
     if (!empty($tipo_empreendimento)) {
         $sql_contratos .= " AND LOWER(c.tipo_empreendimento) = LOWER('" . $conn->real_escape_string($tipo_empreendimento) . "')";
     }
@@ -96,8 +92,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
       transition: transform 0.2s;
       display: inline-block;
       margin: 50px;
-      position: relative; /* Necessário para o pseudo-elemento ::before */
-      overflow: hidden; /* Garante que o degradê não ultrapasse o contêiner */
+      position: relative; 
+      overflow: hidden; 
   }
 
   .contratos li::before {
@@ -106,15 +102,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
       top: 0;
       left: 0;
       width: 100%;
-      height: 40%; /* Define a altura do degradê no topo */
+      height: 40%; 
       background: linear-gradient(to bottom, rgb(2 60 86), transparent);
-      z-index: 1; /* Fica abaixo do texto */
-      border-radius: 15px; /* Mantém o arredondamento */
+      z-index: 1; 
+      border-radius: 15px; 
   }
 
   .contratos li * {
-      position: relative; /* Garante que o conteúdo fique acima do degradê */
-      z-index: 2; /* O texto e outros elementos terão prioridade sobre o degradê */
+      position: relative; 
+      z-index: 2; 
   }
 
 
@@ -146,13 +142,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
 
 
 
-
-
     </style>
-
-
-
-
 
 
 
@@ -211,18 +201,9 @@ h2 {
 
 
 
-
-
 @media (max-width: 768px) {
 
-
 }
-
-
-
-
-
-
 
 
 
@@ -296,17 +277,10 @@ margin-top: 20px;
     }
 
     .contratos li {
-        width: 90%; /* Reduz a largura em telas menores */
+        width: 90%; 
         height: auto;
         margin: 15px 0;
     }
-
-
-
-
-
-
-
 
 
 
@@ -317,7 +291,7 @@ margin-top: 20px;
     }
 
     select {
-        width: 100%; /* Ajuste para ocupar toda a largura */
+        width: 100%; 
         margin-bottom: 10px;
     }
 
@@ -335,9 +309,7 @@ margin-top: 20px;
         padding: 5px 8px;
     }
 
-
 }
-
 
 
 </style>
@@ -348,23 +320,15 @@ margin-top: 20px;
 
 
 
-
-
-
-
-
-
-
-
 <style>
-/* RESET GLOBAL */
+
 * {
 margin: 0px;
 padding: 0;
 box-sizing: border-box;
 }
 
-/* FONTES */
+
 body {
 font-family: 'Inter', sans-serif;
 background-color: #f9f9f9;
@@ -375,9 +339,9 @@ overflow-x: hidden;
 
 header {
 display: flex;
-align-items: center; /* Alinha os elementos verticalmente no centro */
-justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-padding: 20px 200px; /* Espaço interno do header */
+align-items: center; 
+justify-content: space-between; 
+padding: 20px 200px; 
 background: #fff;
 box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
 position: sticky;
@@ -398,7 +362,7 @@ font-weight: 700;
 margin-top: 10px;
 }
 
-/* NAVIGATION BAR */
+
 nav {
 background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
 padding: 17px 30px;
@@ -434,13 +398,11 @@ color: #2c3e50;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
 padding: 50px 80px;
 min-height: 570px;
 }
 
-/* BOX PRINCIPAL */
 .box {
 background: linear-gradient(145deg, #ffffff, #f1f1f1);
 padding: 45px;
@@ -462,7 +424,6 @@ color: #2c3e50;
 margin-bottom: 25px;
 }
 
-/* BOTÕES */
 .btn {
 background-color: #3498db;
 color: white;
@@ -487,7 +448,6 @@ background-color: #1abc9c;
 background-color: #16a085;
 }
 
-/* SEARCH AREA */
 .search-container {
 display: flex;
 
@@ -529,7 +489,6 @@ margin-left: 10px;
 background-color: #2980b9;
 }
 
-/* TABELAS */
 table {
 width: 100%;
 border-collapse: collapse;
@@ -604,7 +563,6 @@ font-size: 1.3rem;
 padding: 25px;
 }
 
-/* FOOTER */
 footer {
 
 color: #7f8c8d;
@@ -618,7 +576,6 @@ font-size: 1.2rem;
 font-weight: 500;
 }
 
-/* RESPONSIVO */
 @media (max-width: 1200px) {
 .container {
 padding: 20px 40px;
@@ -736,7 +693,7 @@ footer {
 
     footer .copyright {
         position: relative;
-        margin-bottom: 20px; /* Espaçamento acima da imagem */
+        margin-bottom: 20px; 
     }
 
     footer .footer-image {
@@ -748,14 +705,6 @@ footer {
         background-size: cover;
         margin: 0;
     }
-
-
-
-
-
-
-
-
 
 
     .acao-btn {
@@ -856,7 +805,7 @@ header h1 {
 
 nav ul {
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os itens no menu */
+    justify-content: center; 
 }
 
 table th, table td {
@@ -867,15 +816,15 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 50%; /* Mais espaço para o nome do projeto */
+    width: 50%; 
 }
 
 table th:nth-child(2), table td:nth-child(2) {
-    width: 20%; /* Ajusta o espaço do status */
+    width: 20%; 
 }
 
 table th:nth-child(3), table td:nth-child(3) {
-    width: 30%; /* Ajusta o espaço das ações */
+    width: 30%; 
 }
 }
 
@@ -899,7 +848,7 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+    width: 60%; 
 }
 
 table th:nth-child(2), table td:nth-child(2) {
@@ -929,15 +878,15 @@ table th, table td {
 
 table th:nth-child(1), table td:nth-child(1) {
     text-align: left;
-    width: 70%; /* Prioriza espaço para o nome do projeto */
+    width: 70%; 
 }
 
 table th:nth-child(2), table td:nth-child(2) {
-    width: 15%; /* Reduz espaço do status */
+    width: 15%; 
 }
 
 table th:nth-child(3), table td:nth-child(3) {
-    width: 15%; /* Reduz espaço das ações */
+    width: 15%; 
 }
 }
 
@@ -962,7 +911,6 @@ table th:nth-child(3), table td:nth-child(3) {
       <div class="box">
             <h2>Bem-vindo, <?php echo $_SESSION['nome']; ?>!</h2>
 
-            <!-- Formulário de filtro -->
             <form method="GET" action="contratos.php">
                 <label for="tipo_empreendimento"><b>Tipo de Projeto:</b></label>
                 <select name="tipo_empreendimento" id="tipo_empreendimento" onchange="this.form.submit()">
@@ -975,7 +923,6 @@ table th:nth-child(3), table td:nth-child(3) {
                 </select>
             </form>
 
-            <!-- Lista de contratos -->
             <?php if (!empty($contratos)): ?>
                 <ul class="contratos">
                     <?php foreach ($contratos as $contrato): ?>
@@ -1008,3 +955,4 @@ table th:nth-child(3), table td:nth-child(3) {
     exit();
 }
 ?>
+
