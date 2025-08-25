@@ -134,9 +134,6 @@ $conn->close();
 
 
 
-
-
-
 <style>
 
 * {
@@ -148,7 +145,6 @@ $conn->close();
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f4f4f9;
-    /* padding: 6% 14% 7%;*/
     color: #333;
 }
 
@@ -221,7 +217,6 @@ table {
 table th, table td {
     padding: 12px;
     text-align: left;
-    /*border: 1px solid #ddd;*/
     font-size: 1.1em;
     border-bottom: 1px solid #ddd;
 }
@@ -330,7 +325,7 @@ footer {
 
 footer .copyright {
     position: relative;
-    margin-bottom: 20px; /* Espaçamento acima da imagem */
+    margin-bottom: 20px; 
 }
 
 footer .footer-image {
@@ -342,13 +337,6 @@ footer .footer-image {
     background-size: cover;
 }
 
-
-/*footer {
-    text-align: center;
-    font-size: 0.9em;
-    margin-top: 40px;
-    color: #555;
-}*/
 
 
 @media (max-width: 768px) {
@@ -382,7 +370,7 @@ footer .footer-image {
     }
 
     .contratos li {
-        width: 90%; /* Reduz a largura em telas menores */
+        width: 90%; 
         height: auto;
         margin: 15px 0;
     }
@@ -418,7 +406,7 @@ footer .footer-image {
     }
 
     select {
-        width: 100%; /* Ajuste para ocupar toda a largura */
+        width: 100%; 
         margin-bottom: 10px;
     }
 
@@ -464,16 +452,13 @@ footer .footer-image {
 <body>
 
 <div class="padding-body">
-        <!--<header>
-            <h1>Área Administrativa - Gerenciamento de Documentos</h1>
-        </header>-->
-
+     
         <header style="display: flex; justify-content: space-between; align-items: center; background: rgb(255,255,255,0); padding: 0px 8px;">
-        <!-- Logo alinhado à esquerda -->
+        
         <div style="max-width: 460px;">
             <img src="boss/img/icons/logo2.png" alt="Logo" style="height: auto; max-height: 125px; width: 100%; object-fit: contain;">
         </div>
-        <!-- Título alinhado à direita -->
+       
         <div class="box2"><h1 style="font-size: 1.5em; margin: 0; text-align: right; padding: 5px 20px 5px; color: #023c56;"><a style="font-weight: 800;">Início ></a><a style="font-weight:300"> Esqueci Minha Senha</a></h1></div>
         </header>
 
@@ -524,3 +509,4 @@ footer .footer-image {
 
 </body>
 </html>
+
