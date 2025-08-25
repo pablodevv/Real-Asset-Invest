@@ -17,19 +17,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Lidar com aprovação ou reprovação de documentos
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao_documento_cliente'])) {
         $acao = $_POST['acao_documento_cliente'];
         $documento_cliente_id = $_POST['documento_cliente_id'] ?? null;
 
         if ($acao === 'aprovar' && $documento_cliente_id) {
-            // Aprovar documento
             $stmt = $conn->prepare("UPDATE documentos_clientes SET status = 'Aprovado', motivo_reprovacao = NULL WHERE id = ?");
             $stmt->bind_param("i", $documento_cliente_id);
             $stmt->execute();
             $_SESSION['msg'] = "Documento aprovado com sucesso!";
         } elseif ($acao === 'reprovar' && $documento_cliente_id && isset($_POST['motivo_reprovacao'])) {
-            // Reprovar documento
             $motivo_reprovacao = $_POST['motivo_reprovacao'];
             $stmt = $conn->prepare("UPDATE documentos_clientes SET status = 'Reprovado', motivo_reprovacao = ? WHERE id = ?");
             $stmt->bind_param("si", $motivo_reprovacao, $documento_cliente_id);
@@ -38,7 +35,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
         }
     }
 
-    // Buscar clientes e documentos enviados
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $sql = "SELECT u.id AS cliente_id, u.nome AS nome_cliente,
                    dc.id AS documento_cliente_id, dc.nome_documento, dc.status, dc.motivo_reprovacao, dc.caminho_arquivo
@@ -62,20 +58,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Operações de CRUD para documentos pré-preenchidos
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['acao_documento'])) {
             $acao = $_POST['acao_documento'];
             $documento_id = $_POST['documento_id'] ?? null;
@@ -102,7 +84,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 $delete_documento->execute();
                 $_SESSION['msg'] = "Documento pré-preenchido removido com sucesso!";
             } elseif ($acao == 'associar' && $documento_id && $cliente_id) {
-    // Recuperar nome do documento
     $stmt = $conn->prepare("SELECT nome_documento FROM documentos_padrao WHERE id = ?");
     $stmt->bind_param("i", $documento_id);
     $stmt->execute();
@@ -110,7 +91,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     $doc_row = $result->fetch_assoc();
     $nome_documento = $doc_row['nome_documento'];
 
-    // Associar documento pré-preenchido ao cliente
     $stmt = $conn->prepare("INSERT INTO documentos_clientes (cliente_id, documento_padrao_id, nome_documento, status) VALUES (?, ?, ?, 'pendente')");
     $stmt->bind_param("iis", $cliente_id, $documento_id, $nome_documento);
     $stmt->execute();
@@ -124,7 +104,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
         }
 
-        // Consulta para buscar documentos pré-preenchidos
         $documentos_pre = [];
         $result = $conn->query("SELECT * FROM documentos_padrao ORDER BY nome_documento");
         if ($result) {
@@ -285,29 +264,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
     </style>
 
 
-
-
-
-
-
 <style>
-
-
-
-
-
-
 
         h2 {
             color: #333;
             font-size: 1.8em;
             margin-bottom: 15px;
         }
-
-
-
-
-
 
         .status {
             padding: 5px 10px;
@@ -342,12 +305,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             transition: background-color 0.3s ease;
         }
 
-
-
-
-
-
-
         .box2 {
             background: #ebeef5;
             padding: 5px;
@@ -356,10 +313,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
 
         @media (max-width: 768px) {
 
-
         }
-
-
 
         input {
             width: 87%;
@@ -369,10 +323,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             border: 1px solid #ddd;
             font-size: 16px;
         }
-
-
-
-
 
 
         button {
@@ -435,15 +385,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
             .contratos li {
-                width: 90%; /* Reduz a largura em telas menores */
+                width: 90%; 
                 height: auto;
                 margin: 15px 0;
             }
-
-
-
-
-
 
             form {
                 display: flex;
@@ -452,11 +397,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
             }
 
             select {
-                width: 100%; /* Ajuste para ocupar toda a largura */
+                width: 100%; 
                 margin-bottom: 10px;
             }
-
-
 
 
         }
@@ -472,29 +415,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario']) && $_SESSION['role'] =
                 padding: 5px 8px;
             }
 
-
         }
-
-
 
     </style>
 
 
 
-
-
-
-
-
     <style>
-    /* RESET GLOBAL */
+   
 * {
 margin: 0px;
 padding: 0;
 box-sizing: border-box;
 }
 
-/* FONTES */
+
 body {
 font-family: 'Inter', sans-serif;
 background-color: #f9f9f9;
@@ -505,9 +440,9 @@ overflow-x: hidden;
 
 header {
     display: flex;
-    align-items: center; /* Alinha os elementos verticalmente no centro */
-    justify-content: space-between; /* Distribui os elementos com espaço entre eles */
-    padding: 20px 200px; /* Espaço interno do header */
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px 200px; 
     background: #fff;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
@@ -528,7 +463,6 @@ header h1 {
     margin-top: 10px;
 }
 
-/* NAVIGATION BAR */
 nav {
 background: linear-gradient(308deg, rgba(2,60,86,1) 0%, rgba(30,117,101,1) 100%);
 padding: 17px 30px;
@@ -564,12 +498,10 @@ color: #2c3e50;
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTAINER PRINCIPAL */
 .container {
 padding: 50px 200px !important;
 }
 
-/* BOX PRINCIPAL */
 .box {
 background: linear-gradient(145deg, #ffffff, #f1f1f1);
 padding: 45px;
@@ -591,7 +523,6 @@ color: #2c3e50;
 margin-bottom: 25px;
 }
 
-/* BOTÕES */
 .btn {
 background-color: #3498db;
 color: white;
@@ -616,7 +547,6 @@ background-color: #1abc9c;
 background-color: #16a085;
 }
 
-/* SEARCH AREA */
 .search-container {
 display: flex;
 
@@ -658,7 +588,6 @@ margin-left: 10px;
 background-color: #2980b9;
 }
 
-/* TABELAS */
 table {
 width: 100%;
 border-collapse: collapse;
@@ -706,7 +635,6 @@ background-color: #dc3545;
 color: white;
 }
 
-/* CARDS GRÁFICOS */
 .card {
 background: #ffffff;
 padding: 35px;
@@ -733,7 +661,6 @@ font-size: 1.3rem;
 padding: 25px;
 }
 
-/* FOOTER */
 footer {
 
 color: #7f8c8d;
@@ -747,7 +674,6 @@ font-size: 1.2rem;
 font-weight: 500;
 }
 
-/* RESPONSIVO */
 @media (max-width: 1200px) {
 .container {
     padding: 20px 40px;
@@ -865,7 +791,7 @@ footer {
 
         footer .copyright {
             position: relative;
-            margin-bottom: 20px; /* Espaçamento acima da imagem */
+            margin-bottom: 20px; 
         }
 
         footer .footer-image {
@@ -877,14 +803,6 @@ footer {
             background-size: cover;
             margin: 0;
         }
-
-
-
-
-
-
-
-
 
 
         .acao-btn {
@@ -942,7 +860,6 @@ footer {
  }
 
 
-
  th:nth-child(3) {
     text-align: left;
     padding-left: 100px;
@@ -961,8 +878,6 @@ th:nth-child(2), td:nth-child(2) {
     width: 1%;
 
   }
-
-
 
 
 
@@ -985,7 +900,7 @@ th:nth-child(2), td:nth-child(2) {
 
     nav ul {
         flex-wrap: wrap;
-        justify-content: center; /* Centraliza os itens no menu */
+        justify-content: center; 
     }
 
     table th, table td {
@@ -996,15 +911,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 50%; /* Mais espaço para o nome do projeto */
+        width: 50%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 20%; /* Ajusta o espaço do status */
+        width: 20%;
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 30%; /* Ajusta o espaço das ações */
+        width: 30%; 
     }
 }
 
@@ -1028,7 +943,7 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 60%; /* Mais espaço para o nome do projeto em telas menores */
+        width: 60%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
@@ -1058,15 +973,15 @@ th:nth-child(2), td:nth-child(2) {
 
     table th:nth-child(1), table td:nth-child(1) {
         text-align: left;
-        width: 70%; /* Prioriza espaço para o nome do projeto */
+        width: 70%; 
     }
 
     table th:nth-child(2), table td:nth-child(2) {
-        width: 15%; /* Reduz espaço do status */
+        width: 15%;
     }
 
     table th:nth-child(3), table td:nth-child(3) {
-        width: 15%; /* Reduz espaço das ações */
+        width: 15%;
     }
 }
 
@@ -1094,7 +1009,6 @@ th:nth-child(2), td:nth-child(2) {
 
 
             <h2>Documentos Pré-Preenchidos</h2>
-            <!-- Exibir mensagem de sucesso -->
       <?php if (isset($_SESSION['msg'])): ?>
           <h3 class="alert" style="color: #00b76b;">
               <?php echo $_SESSION['msg']; unset($_SESSION['msg']); ?>
@@ -1155,10 +1069,10 @@ th:nth-child(2), td:nth-child(2) {
             form input[type="text"],
             form select {
                 width: 100%;
-                max-width: 75%; /* Mantém uma largura fixa para inputs maiores */
+                max-width: 75%; 
                 padding: 10px;
                 font-size: 16px;
-                margin-bottom: 10px; /* Espaçamento consistente */
+                margin-bottom: 10px; 
                 border: 1px solid #ddd;
                 border-radius: 5px;
                 box-sizing: border-box;
@@ -1189,14 +1103,13 @@ th:nth-child(2), td:nth-child(2) {
                 background-color: #00C976;
             }
 
-            /* Responsividade */
             @media (max-width: 768px) {
                 form input[type="text"],
                 form select,
                 form button {
-                    width: 100%; /* Full width para telas menores */
+                    width: 100%; 
                     max-width: none;
-                    margin-bottom: 10px; /* Adiciona espaçamento entre elementos */
+                    margin-bottom: 10px; 
                 }
 
 
@@ -1207,8 +1120,8 @@ th:nth-child(2), td:nth-child(2) {
             ul li form {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px; /* Espaçamento entre elementos dentro do formulário */
-                align-items: center; /* Centraliza elementos verticalmente */
+                gap: 10px; 
+                align-items: center;
             }
 
 
@@ -1252,7 +1165,7 @@ th:nth-child(2), td:nth-child(2) {
                                 <td>
                                     <?php if ($doc['status'] == 'Aguardando Aprovação'): ?>
                                       <form method="POST" action="admin_documentos.php" style="display: inline;">
-      <input type="hidden" name="documento_cliente_id" value="<?php echo $doc['documento_cliente_id']; ?>"> <!-- Altere para documento_cliente_id -->
+      <input type="hidden" name="documento_cliente_id" value="<?php echo $doc['documento_cliente_id']; ?>"> 
       <input type="hidden" name="acao_documento_cliente" value="aprovar">
       <button type="submit" style="background-color: #00C976;">Aprovar</button>
   </form>
@@ -1260,7 +1173,7 @@ th:nth-child(2), td:nth-child(2) {
 
   <form method="POST" action="admin_documentos.php" style="display: inline;">
       <input type="hidden" name="acao_documento_cliente" value="reprovar">
-      <input type="hidden" name="documento_cliente_id" value="<?php echo $doc['documento_cliente_id']; ?>"> <!-- Corrigido: documento_cliente_id -->
+      <input type="hidden" name="documento_cliente_id" value="<?php echo $doc['documento_cliente_id']; ?>"> 
 
       <button type="submit" style="background-color: #cd4739;">Reprovar</button>
       <textarea name="motivo_reprovacao" placeholder="Motivo da reprovação" required></textarea>
@@ -1312,3 +1225,4 @@ th:nth-child(2), td:nth-child(2) {
     header("Location: login.php");
     exit();
 }
+
