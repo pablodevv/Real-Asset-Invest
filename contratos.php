@@ -108,7 +108,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['usuario'])) {
       border-radius: 15px; 
   }
 
-  .contratos li * {
+  .contratos li * { 
       position: relative; 
       z-index: 2; 
   }
@@ -955,4 +955,5 @@ table th:nth-child(3), table td:nth-child(3) {
     exit();
 }
 ?>
+
 
